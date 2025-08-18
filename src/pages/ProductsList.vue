@@ -9,6 +9,7 @@
         :image="prod.image"
         :description="prod.description"
         :price="prod.price"
+        :product="prod"
       ></product-item>
     </ul>
   </section>

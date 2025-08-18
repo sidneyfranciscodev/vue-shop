@@ -11,20 +11,19 @@
       </div>
     </div>
     <div class="product__actions">
-      <button @click="addToCart">Add to Cart</button>
+      <button @click="addToCart(product)">Add to Cart</button>
     </div>
   </li>
 </template>
 
-<script>
-export default {
-  props: ['id', 'image', 'title', 'price', 'description'],
-  methods: {
-    addToCart() {
-      console.log('new product was added')
-    },
-  },
-};
+<script setup>
+import { useShopStore } from '@/stores/store.js'
+
+const store = useShopStore();
+
+defineProps(['product', 'id', 'image', 'title', 'price', 'description']);
+
+const addToCart = prod => store.addProductToCart(prod)
 </script>
 
 <style lang="scss" scoped>
