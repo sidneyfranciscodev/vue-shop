@@ -1,7 +1,7 @@
 <template>
   <section>
     <h2>Your Cart</h2>
-    <h3>Total Amount: ${{ cartTotal }}</h3>
+    <h3>Total Amount: <base-badge mode="elegant">${{ cartTotal }}</base-badge></h3>
     <ul>
       <cart-item
         v-for="item in cart.items"
@@ -16,24 +16,14 @@
   </section>
 </template>
 
-<script>
+<script setup>
 import CartItem from '../components/cart/CartItem.vue';
+import BaseBadge from '@/components/ui/BaseBadge.vue';
+import { useShopStore } from '@/stores/store';
+import { computed } from 'vue'
 
-export default {
-  data(){
-    return {
-      cart: { items: [], total: 0, qty: 0 },
-    }
-  },
-  components: {
-    CartItem,
-  },
-  computed: {
-    cartTotal() {
-      return this.cart.total.toFixed(2);
-    }
-  }
-};
+const store = useShopStore()
+const cartTotal = computed(() => store.cart.total.toFixed(2))
 </script>
 
 <style lang="scss" scoped>
