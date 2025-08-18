@@ -14,34 +14,13 @@
   </section>
 </template>
 
-<script>
+<script setup>
 import ProductItem from '../components/products/ProductItem.vue';
+import { useShopStore } from '../stores/store.js';
+import { computed } from 'vue'
 
-export default {
-  data(){
-    return {
-      products: [
-        {
-          id: 1,
-          title: 'product-1',
-          image: 'image',
-          description: 'description',
-          price: 0.99
-        },
-        {
-          id: 2,
-          title: 'product-2',
-          image: 'image',
-          description: 'description',
-          price: 2.99
-        },
-      ]
-    }
-  },
-  components: {
-    ProductItem,
-  },
-};
+const store = useShopStore();
+const products = computed(()=> store.products);
 </script>
 
 <style scoped>
