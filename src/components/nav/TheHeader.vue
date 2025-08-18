@@ -10,32 +10,24 @@
         </li>
         <li>
           <router-link to="/cart">Cart</router-link>
+          <base-badge mode="elegant">{{ cart.qty }}</base-badge>
         </li>
       </ul>
     </nav>
     <div>
-      <button v-if="!isLoggedIn" @click="login">Login</button>
-      <button v-if="isLoggedIn" @click="logout">Logout</button>
+      <button v-if="!store.isLoggedIn" @click="store.login">Login</button>
+      <button v-if="store.isLoggedIn" @click="store.logout">Logout</button>
     </div>
   </header>
 </template>
 
-<script>
-export default {
-  data(){
-    return {
-      isLoggedIn: false,
-    }
-  },
-  methods: {
-    login() {
-      this.isLoggedIn = true;
-    },
-    logout() {
-      this.isLoggedIn = false;
-    },
-  }
-};
+<script setup>
+import { useShopStore } from '@/stores/store';
+import BaseBadge from '../ui/BaseBadge.vue';
+
+const store = useShopStore()
+const cart = store.cart
+
 </script>
 
 <style lang="scss" scoped>
