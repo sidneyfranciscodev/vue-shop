@@ -11,6 +11,7 @@
         :image="item.image"
         :price="item.price"
         :qty="item.qty"
+        :item="item"
       ></cart-item>
     </ul>
   </section>
