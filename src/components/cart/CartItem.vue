@@ -16,25 +16,21 @@
         </div>
       </div>
       <div class="item__total">Total: ${{ itemTotal }}</div>
-      <button @click="remove">Remove</button>
+      <button @click="remove(item)">Remove</button>
     </div>
   </li>
 </template>
 
-<script>
-export default {
-  props: ['prodId', 'title', 'image', 'price', 'qty'],
-  computed: {
-    itemTotal() {
-      return (this.price * this.qty).toFixed(2);
-    }
-  },
-  methods: {
-    remove(prodId) {
-      console.log(prodId, 'product removed')
-    }
-  }
-};
+<script setup>
+import { computed } from 'vue'
+import { useShopStore } from '@/stores/store'
+
+const store = useShopStore()
+
+defineProps(['prodId', 'title', 'image', 'price', 'qty'])
+
+const itemTotal =  computed(() => (price * qty).toFixed(2))
+const remove = prod => store.removeProductFromCart(prod)
 </script>
 
 <style lang="scss" scoped>

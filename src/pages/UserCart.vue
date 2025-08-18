@@ -23,7 +23,8 @@ import { useShopStore } from '@/stores/store';
 import { computed } from 'vue'
 
 const store = useShopStore()
-const cartTotal = computed(() => store.cart.total.toFixed(2))
+const cart = store.cart
+const cartTotal = computed(() => cart.total.toFixed(2))
 </script>
 
 <style lang="scss" scoped>
