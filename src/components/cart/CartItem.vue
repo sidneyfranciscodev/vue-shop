@@ -15,7 +15,7 @@
           <strong>{{ qty }}</strong>
         </div>
       </div>
-      <div class="item__total">Total: ${{ itemTotal }}</div>
+      <div class="item__total">Total: ${{ total }}</div>
       <button @click="remove(item)">Remove</button>
     </div>
   </li>
@@ -28,7 +28,7 @@ import { useShopStore } from '@/stores/store'
 const store = useShopStore()
 const props = defineProps(['prodId', 'title', 'image', 'price', 'qty'])
 
-const itemTotal =  computed(() => (props.price * props.qty).toFixed(2))
+const total =  store.itemTotal(props.price, props.qty)
 const remove = prod => store.removeProductFromCart(prod)
 </script>
 
