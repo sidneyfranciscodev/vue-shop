@@ -36,7 +36,7 @@ export const useShopStore = defineStore('shop', {
 
   getters: {
     cartTotal: state => state.cart.total.toFixed(2),
-    itemTotal: state => (price, qty) => (price * qty).toFixed(2)
+    itemTotal: () => (price, qty) => (price * qty).toFixed(2)
   },
 
   actions: {

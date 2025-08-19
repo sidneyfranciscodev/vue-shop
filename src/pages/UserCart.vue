@@ -20,11 +20,12 @@
 <script setup>
 import CartItem from '../components/cart/CartItem.vue';
 import BaseBadge from '@/components/ui/BaseBadge.vue';
+import { computed } from 'vue'
 import { useShopStore } from '@/stores/store';
 
 const store = useShopStore()
 const cart = store.cart
-const total = store.cartTotal
+const total = computed(() => store.cartTotal)
 
 </script>
 
