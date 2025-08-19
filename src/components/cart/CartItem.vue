@@ -26,10 +26,9 @@ import { computed } from 'vue'
 import { useShopStore } from '@/stores/store'
 
 const store = useShopStore()
+const props = defineProps(['prodId', 'title', 'image', 'price', 'qty'])
 
-defineProps(['prodId', 'title', 'image', 'price', 'qty'])
-
-const itemTotal =  computed(() => (price * qty).toFixed(2))
+const itemTotal =  computed(() => (props.price * props.qty).toFixed(2))
 const remove = prod => store.removeProductFromCart(prod)
 </script>
 
