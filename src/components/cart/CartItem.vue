@@ -16,17 +16,16 @@
         </div>
       </div>
       <div class="item__total">Total: ${{ total }}</div>
-      <button @click="remove(item)">Remove</button>
+      <button @click="remove(id)">Remove</button>
     </div>
   </li>
 </template>
 
 <script setup>
-import { computed } from 'vue'
 import { useShopStore } from '@/stores/store'
 
 const store = useShopStore()
-const props = defineProps(['prodId', 'title', 'image', 'price', 'qty'])
+const props = defineProps(['id', 'title', 'image', 'price', 'qty'])
 
 const total =  store.itemTotal(props.price, props.qty)
 const remove = prod => store.removeProductFromCart(prod)
