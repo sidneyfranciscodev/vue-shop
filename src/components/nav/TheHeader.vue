@@ -12,6 +12,9 @@
           <router-link to="/cart">Cart</router-link>
           <base-badge mode="elegant">{{ cart.qty }}</base-badge>
         </li>
+        <li v-if="store.isLoggedIn">
+          <router-link to="/admin">Admin</router-link>
+        </li>
       </ul>
     </nav>
     <div>
