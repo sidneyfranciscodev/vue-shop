@@ -34,7 +34,9 @@ export const useShopStore = defineStore('shop', {
     cart: { items: [], total: 0, qty: 0 },
   }),
 
-  getters: {},
+  getters: {
+    cartTotal: state => state.cart.total.toFixed(2),
+  },
 
   actions: {
     addProductToCart(productData) {
